@@ -12,19 +12,15 @@ async function testValidInputs(capabilities) {
     .build();
   await driver.get("https://sauce-form.vercel.app/");
 
-  const nameInputField = await driver.findElement(
-    webdriver.By.cssSelector("#name")
-  );
+  const nameInputField = await driver.findElement(webdriver.By.css("#name"));
   const numberInputField = await driver.findElement(
-    webdriver.By.cssSelector("#number")
+    webdriver.By.css("#number")
   );
 
   await nameInputField.sendKeys("Johan");
   await numberInputField.sendKeys("20");
 
-  const submitButton = await driver.findElement(
-    webdriver.By.cssSelector("#submit")
-  );
+  const submitButton = await driver.findElement(webdriver.By.css("#submit"));
 
   await submitButton.click();
 
