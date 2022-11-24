@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - "./**"
-      - ".github/workflows/selenium.js.yml"
+      - ".github/workflows/actions.yml"
       - "!**.md"
     branches: [main]
   pull_request:
     # Only trigger if files in this path changed
     paths:
       - "./**"
-      - ".github/workflows/selenium.js.yml"
+      - ".github/workflows/actions.yml"
       # Don't run on Markdown changes
       - "!**.md"
     branches: [main]

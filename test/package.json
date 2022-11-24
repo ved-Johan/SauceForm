@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test.safari.us": "npx mocha tests/**/simple.safari.spec.js"
+    "test": "npx mocha tests/**/*.spec.js"
   },
   "keywords": [],
   "devDependencies": {
