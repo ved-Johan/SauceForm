@@ -1,5 +1,6 @@
 const webdriver = require("selenium-webdriver");
-async function runTestWithCaps(capabilities) {
+
+async function testValidInputs(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -9,25 +10,36 @@ async function runTestWithCaps(capabilities) {
       ...(capabilities["browser"] && { browserName: capabilities["browser"] }), // Because NodeJS language binding requires browserName to be defined
     })
     .build();
-  await driver.get("http://www.duckduckgo.com");
-  const inputField = await driver.findElement(webdriver.By.name("q"));
-  await inputField.sendKeys("SauceLabs", webdriver.Key.ENTER); // this submits on desktop browsers
+  await driver.get("https://sauce-form.vercel.app/");
+
+  const nameInputField = await driver.findElement(
+    webdriver.By.cssSelector("#name")
+  );
+  const numberInputField = await driver.findElement(
+    webdriver.By.cssSelector("#number")
+  );
+
+  await nameInputField.sendKeys("Johan");
+  await numberInputField.sendKeys("20");
+
+  const submitButton = await driver.findElement(
+    webdriver.By.cssSelector("#submit")
+  );
+
+  await submitButton.click();
+
   try {
-    await driver.wait(webdriver.until.titleMatches(/SauceLabs/i), 5000);
-  } catch (e) {
-    await inputField.submit(); // this helps in mobile browsers
-  }
-  try {
-    await driver.wait(webdriver.until.titleMatches(/SauceLabs/i), 5000);
-    console.log(await driver.getTitle());
+    let ele = await driver.wait(until.elementLocated(By.css(".alert")), 500);
+    let alertText = await ele.getText();
+    assert(alertText == "Success");
     await driver.executeScript("sauce:job-result=passed");
   } catch (e) {
-    console.log("test failed");
     await driver.executeScript("sauce:job-result=failed");
   }
   await driver.quit();
 }
-const capabilities1 = {
+
+const capabilities = {
   browserName: "safari",
   browserVersion: "15",
   platformName: "macOS 12",
@@ -37,4 +49,4 @@ const capabilities1 = {
   },
 };
 
-runTestWithCaps(capabilities1);
+testValidInputs(capabilities);
