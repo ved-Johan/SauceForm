@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(246, 248, 250);
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -13,7 +28,22 @@
 
 input {
   width: 15rem;
-  margin: 4px;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-left: 0;
+  margin-right: 0;
+  height: 1.85rem;
+  background-color: transparent;
+  border: 1px solid grey;
+  outline: 1px solid transparent;
+  border-radius: 4px;
+  transition: border 0.2s;
+  transition: outline 0.2s;
+}
+
+input:focus {
+  border: 1px solid rgb(145, 182, 199);
+  outline: 1px solid rgb(145, 182, 199);
 }
 
 .inputContainer {
@@ -21,4 +51,61 @@ input {
   align-items: start;
   flex-direction: column;
   margin-top: 8px;
+}
+
+.inputError {
+  border: 1px solid rgb(187, 3, 3);
+}
+
+.muted {
+  color: gray;
+  font-size: small;
+}
+
+button {
+  margin-top: 12px;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  background-color: rgb(88, 86, 86);
+  color: white;
+  border-radius: 16px;
+  border: 0px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+.alert {
+  margin: auto;
+  margin-top: 20px;
+  width: 10rem;
+  padding: 1.2rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.error {
+  background-color: rgb(204, 67, 67);
+  color: white;
+}
+
+.success {
+  background-color: rgb(112, 206, 112);
+  color: white;
+}
+
+.border {
+  position: relative;
+}
+
+.formContainer {
+  background-color: rgb(246, 248, 250);
+  padding: 1.4rem;
+  z-index: 2;
+  position: relative;
 }
