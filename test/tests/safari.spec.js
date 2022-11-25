@@ -25,7 +25,7 @@ async function testValidInputs(capabilities) {
   await submitButton.click();
 
   try {
-    let ele = await driver.wait(until.elementLocated(By.css(".alert")), 1000);
+    let ele = await driver.wait(webdriver.until.elementLocated(webdriver.By.css(".alert")), 1000);
     let alertText = await ele.getText();
     assert(alertText == "Success");
     await driver.executeScript("sauce:job-result=passed");
