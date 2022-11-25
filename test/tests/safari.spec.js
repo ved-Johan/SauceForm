@@ -1,5 +1,5 @@
 const webdriver = require("selenium-webdriver");
-const assert = require('assert');
+const assert = require("assert");
 
 async function fillAndSubmitForm(webdriver, driver, name, number) {
   const nameInputField = await driver.findElement(webdriver.By.css("#name"));
@@ -30,12 +30,15 @@ async function testValidInputs(capabilities) {
   fillAndSubmitForm(webdriver, driver, "Johan", "20");
 
   try {
-    let ele = await driver.wait(webdriver.until.elementLocated(webdriver.By.css(".alert")), 1000);
+    let ele = await driver.wait(
+      webdriver.until.elementLocated(webdriver.By.css(".alert")),
+      1000
+    );
     let alertText = await ele.getText();
     assert(alertText == "Success");
     await driver.executeScript("sauce:job-result=passed");
   } catch (e) {
-    console.error(e)
+    console.error(e);
     await driver.executeScript("sauce:job-result=failed");
   }
   await driver.quit();
@@ -56,7 +59,10 @@ async function testInvalidName(capabilities) {
   fillAndSubmitForm(webdriver, driver, "", "20");
 
   try {
-    let ele = await driver.wait(until.elementLocated(By.css(".alert")), 500);
+    let ele = await driver.wait(
+      webdriver.until.elementLocated(webdriver.By.css(".alert")),
+      500
+    );
     let alertText = await ele.getText();
     assert(alertText == "Error");
     await driver.executeScript("sauce:job-result=passed");
@@ -81,7 +87,10 @@ async function testInvalidNumber(capabilities) {
   fillAndSubmitForm(webdriver, driver, "Pedro", "-1");
 
   try {
-    let ele = await driver.wait(until.elementLocated(By.css(".alert")), 500);
+    let ele = await driver.wait(
+      webdriver.until.elementLocated(webdriver.By.css(".alert")),
+      500
+    );
     let alertText = await ele.getText();
     assert(alertText == "Error");
     await driver.executeScript("sauce:job-result=passed");
