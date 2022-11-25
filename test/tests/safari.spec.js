@@ -27,7 +27,7 @@ async function testValidInputs(capabilities) {
     .build();
   await driver.get("https://sauce-form.vercel.app/");
 
-  await fillAndSubmitForm(webdriver, driver, "Johan", "20");
+  await fillAndSubmitForm(webdriver, driver, "Johan", "199");
 
   try {
     let ele = await driver.wait(
@@ -130,6 +130,17 @@ const capabilities3 = {
   },
 };
 
+const capabilities4 = {
+  browserName: "Safari",
+  browserVersion: "15",
+  platformName: "iOS",
+  "sauce:options": {
+    build: "sauce-js",
+    name: "CP-SC-01 on iOS",
+  },
+};
+
 testValidInputs(capabilities1);
 testInvalidName(capabilities2);
 testInvalidNumber(capabilities3);
+testValidInputs(capabilities4);
