@@ -1,4 +1,5 @@
 const webdriver = require("selenium-webdriver");
+const assert = require('assert');
 
 async function testValidInputs(capabilities) {
   let driver = new webdriver.Builder()
