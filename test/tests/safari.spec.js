@@ -27,7 +27,7 @@ async function testValidInputs(capabilities) {
     .build();
   await driver.get("https://sauce-form.vercel.app/");
 
-  fillAndSubmitForm(webdriver, driver, "Johan", "20");
+  await fillAndSubmitForm(webdriver, driver, "Johan", "20");
 
   try {
     let ele = await driver.wait(
@@ -56,7 +56,7 @@ async function testInvalidName(capabilities) {
     .build();
   await driver.get("https://sauce-form.vercel.app/");
 
-  fillAndSubmitForm(webdriver, driver, "", "20");
+  await fillAndSubmitForm(webdriver, driver, "", "20");
 
   try {
     let ele = await driver.wait(
@@ -84,7 +84,7 @@ async function testInvalidNumber(capabilities) {
     .build();
   await driver.get("https://sauce-form.vercel.app/");
 
-  fillAndSubmitForm(webdriver, driver, "Pedro", "-1");
+  await fillAndSubmitForm(webdriver, driver, "Pedro", "-1");
 
   try {
     let ele = await driver.wait(
