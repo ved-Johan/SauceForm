@@ -21,7 +21,7 @@ function getCapabilites(s) {
     browserVersion: "15",
     platformName: "macOS 12",
     "sauce:options": {
-      build: "sauce-js",
+      build: process.env.COMMIT_MESSAGE,
       name: s,
     },
   };

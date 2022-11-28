@@ -49,7 +49,7 @@ const capabilities = {
   browserVersion: "latest",
   platformName: "iOS",
   "sauce:options": {
-    build: process.env.COMMIT_MESSAGE,
+    build: "iosB",
     name: "CP-SF-01 on iOS",
   },
 };
