@@ -21,7 +21,7 @@ export default function App() {
     if (
       number.length == 0 ||
       parseFloat(number) <= 0 ||
-      parseFloat(number) >= 100
+      parseFloat(number) >= 200
     ) {
       alertInvalid();
       setErrorAs("number", true);

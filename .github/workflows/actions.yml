@@ -12,6 +12,7 @@ jobs:
     env:
       SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
       SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+      COMMIT_MESSAGE: ${{ github.event.commits[0].message }}
 
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
 
