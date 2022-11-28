@@ -15,9 +15,19 @@ async function fillAndSubmitForm(webdriver, driver, name, number) {
   await submitButton.click();
 }
 
-async function testSF1(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-01 on macOS";
+function getCapabilites(s) {
+  return {
+    browserName: "safari",
+    browserVersion: "15",
+    platformName: "macOS 12",
+    "sauce:options": {
+      build: "sauce-js",
+      name: s,
+    },
+  };
+}
+
+async function testSF1(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -46,9 +56,7 @@ async function testSF1(capabilitiesS) {
   await driver.quit();
 }
 
-async function testSF2(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-02 on macOS";
+async function testSF2(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -76,9 +84,7 @@ async function testSF2(capabilitiesS) {
   await driver.quit();
 }
 
-async function testSF3(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-03 on macOS";
+async function testSF3(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -111,9 +117,7 @@ async function testSF3(capabilitiesS) {
   await driver.quit();
 }
 
-async function testSF4(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-04 on macOS";
+async function testSF4(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -141,9 +145,7 @@ async function testSF4(capabilitiesS) {
   await driver.quit();
 }
 
-async function testSF5(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-05 on macOS";
+async function testSF5(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -171,9 +173,7 @@ async function testSF5(capabilitiesS) {
   await driver.quit();
 }
 
-async function testSF6(capabilitiesS) {
-  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
-  capabilities["sauce:options"].name = "CP-SF-06 on macOS";
+async function testSF6(capabilities) {
   let driver = new webdriver.Builder()
     .usingServer(
       `http://${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY}@ondemand.us-west-1.saucelabs.com/wd/hub`
@@ -201,19 +201,9 @@ async function testSF6(capabilitiesS) {
   await driver.quit();
 }
 
-const capabilities = {
-  browserName: "safari",
-  browserVersion: "15",
-  platformName: "macOS 12",
-  "sauce:options": {
-    build: "sauce-js",
-    name: "CP-SF-01 on macOS",
-  },
-};
-
-testSF1(capabilities);
-testSF2(capabilities);
-testSF3(capabilities);
-testSF4(capabilities);
-testSF5(capabilities);
-testSF6(capabilities);
+testSF1(getCapabilites("CP-SF-01 on macOS"));
+testSF2(getCapabilites("CP-SF-02 on macOS"));
+testSF3(getCapabilites("CP-SF-03 on macOS"));
+testSF4(getCapabilites("CP-SF-04 on macOS"));
+testSF5(getCapabilites("CP-SF-05 on macOS"));
+testSF6(getCapabilites("CP-SF-06 on macOS"));
