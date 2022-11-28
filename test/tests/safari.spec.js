@@ -15,7 +15,8 @@ async function fillAndSubmitForm(webdriver, driver, name, number) {
   await submitButton.click();
 }
 
-async function testSF1(capabilities) {
+async function testSF1(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-01 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
@@ -45,7 +46,8 @@ async function testSF1(capabilities) {
   await driver.quit();
 }
 
-async function testSF2(capabilities) {
+async function testSF2(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-02 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
@@ -74,7 +76,8 @@ async function testSF2(capabilities) {
   await driver.quit();
 }
 
-async function testSF3(capabilities) {
+async function testSF3(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-03 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
@@ -108,7 +111,8 @@ async function testSF3(capabilities) {
   await driver.quit();
 }
 
-async function testSF4(capabilities) {
+async function testSF4(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-04 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
@@ -137,7 +141,8 @@ async function testSF4(capabilities) {
   await driver.quit();
 }
 
-async function testSF5(capabilities) {
+async function testSF5(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-05 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
@@ -166,7 +171,8 @@ async function testSF5(capabilities) {
   await driver.quit();
 }
 
-async function testSF6(capabilities) {
+async function testSF6(capabilitiesS) {
+  capabilities = JSON.parse(JSON.stringify(capabilitiesS));
   capabilities["sauce:options"].name = "CP-SF-06 on macOS";
   let driver = new webdriver.Builder()
     .usingServer(
